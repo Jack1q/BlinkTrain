@@ -97,15 +97,19 @@ void blink(int pin) {
 
 
 
+// only lights up while object is within 20 cm
 void syncBlink() {
-  for (int i = 0; i < 8; i++) {
-    digitalWrite(pins[i], HIGH);
+  int distance = getDistance();
+  while (distance <= 20) {
+    for (int i = 0; i < 8; i++) {
+      digitalWrite(pins[i], HIGH);
   }
-  delay(1000);
+  distance = getDistance();
+  }
   for (int i = 0; i < 8; i++) {
     digitalWrite(pins[i], LOW);
   }
-  delay(1000);
+  
 }
 
 void randomBlink() {
