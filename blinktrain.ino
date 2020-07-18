@@ -93,6 +93,35 @@ void blink(int pin) {
 
 
 
+void staggeredBlink() {
+  int distance = getDistance();
+  int ledsToLight = 0;
+  if (distance >= 34) 
+    ledsToLight++;
+  if (distance >= 30)
+    ledsToLight++;
+  if (distance >= 26)
+    ledsToLight++;
+  if (distance >= 22)
+    ledsToLight++;
+  if (distance >= 18)
+    ledsToLight++;
+  if (distance >= 14)
+    ledsToLight++;
+  if (distance >= 10)
+    ledsToLight++;
+  if (distance >= 6)
+    ledsToLight++;
+
+  for (int i = 0; i < ledsToLight; i++) {
+    digitalWrite(pins[i], HIGH);
+  }
+  for (int i = ledsToLight; i < 8; i++) {
+    digitalWrite(pins[i], LOW);
+  }
+}
+
+
 
 
 
